@@ -2,10 +2,10 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import morgan from "morgan";
-import { connectToDatabase } from "./lib/db.js";
-import inquiriesRouter from "./routes/inquiry.js";
-import projectsRouter from "./routes/projects.js";
-import authRouter from "./routes/auth.js";
+import { connectToDatabase } from "./src/lib/db.js";
+import inquiriesRouter from "./src/routes/inquiry.js";
+import projectsRouter from "./src/routes/projects.js";
+import authRouter from "./src/routes/auth.js";
 
 const app = express();
 
