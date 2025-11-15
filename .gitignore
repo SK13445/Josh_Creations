@@ -1,0 +1,23 @@
+josh-creations-mern/server/README.md
+josh-creations-mern/server/.env
+josh-creations-mern/server/node_modules
+# OS
+.DS_Store
+Thumbs.db
+
+# Env files
+josh-creations-mern/**/.env
+josh-creations-mern/**/.env.*
+
+# Node modules
+josh-creations-mern/**/node_modules
+
+# Build outputs
+josh-creations-mern/client/dist
+josh-creations-mern/**/.vite
+
+# Logs
+josh-creations-mern/**/npm-debug.log*
+josh-creations-mern/**/yarn-debug.log*
+josh-creations-mern/**/yarn-error.log*
+josh-creations-mern/**/pnpm-debug.log*
