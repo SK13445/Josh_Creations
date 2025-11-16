@@ -2,7 +2,7 @@
   "name": "josh-creations-server",
   "version": "1.0.0",
   "type": "module",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
     "dev": "node index.js"
