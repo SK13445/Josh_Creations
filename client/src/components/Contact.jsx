@@ -45,7 +45,7 @@ export default function Contact() {
                 placeholder="you@example.com"
               />
             </label>
-            <label className="flex flex-col gap-2 text-muted font-semibold w-full">
+            <label className="md:col-span-2 grid gap-2 text-muted font-semibold">
               <span>What are you looking for?</span>
               <select
                 className="w-full px-3 py-2 rounded-lg border border-border bg-[#0e1116] text-text"
@@ -58,7 +58,6 @@ export default function Contact() {
                 <option>Digital Marketing</option>
               </select>
             </label>
-
             <label className="md:col-span-2 grid gap-2 text-muted font-semibold">
               <span>Message</span>
               <textarea

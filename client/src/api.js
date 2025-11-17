@@ -1,4 +1,4 @@
-const base = import.meta.env.VITE_API_URL;
+const base = import.meta.env.VITE_API_URL; // same-origin; vite proxy handles /api
 
 function authHeaders() {
   const token = localStorage.getItem("jc_token");
