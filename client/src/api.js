@@ -23,13 +23,22 @@ export async function submitInquiry(data) {
     body: JSON.stringify(data),
   });
 
-  if (!res.ok) throw new Error("Failed to submit inquiry");
-
-  try {
-    return await res.json();
-  } catch {
-    return { success: true };
+  if (!res.ok) {
+    const text = await res.text();
+    console.error("Inquiry failed:", res.status, text);
+    throw new Error("Failed to submit inquiry");
   }
+
+  // Safe JSON parse (prevents double toast)
+  let json;
+  try {
+    json = await res.json();
+  } catch (err) {
+    console.warn("⚠ JSON parse failed, using fallback:", err);
+    json = { success: true };
+  }
+
+  return json;
 }
 
 export async function adminLogin({ username, password }) {

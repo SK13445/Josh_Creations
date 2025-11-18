@@ -13,9 +13,9 @@ export default function Hero() {
             transition={{ duration: 1, ease: "easeOut" }}
           >
             <Typewriter
-              words={["We build, launch, and grow your digital presence"]}
+              words={["We build, Launch, and grow your digital presence"]}
               cursor
-              cursorStyle="|"
+              cursorStyle=""
               typeSpeed={70}
               deleteSpeed={50}
               delaySpeed={1000}
