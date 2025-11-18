@@ -1,0 +1,32 @@
+Frontend .gitignore
+node_modules
+dist
+.env
+.env.*
+npm-debug.log*
+node_modules
+.env
+node_modules
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+README.md
+
+
+
+
+
+backend .gitignore
+node_modules
+.env
+.env.*
+npm-debug.log*
+node_modules
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+README.md
+
