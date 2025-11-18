@@ -9,21 +9,44 @@ import authRouter from "./src/routes/auth.js";
 
 const app = express();
 
-// Config
+// ---- CONFIG ----
 const PORT = process.env.PORT || 5000;
-const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || "http://localhost:5173";
 
-// Middleware
-app.use(cors({ origin: CLIENT_ORIGIN, credentials: true }));
+const allowedOrigins = [
+  "http://localhost:5173", // Local development
+  "https://josh-creations.vercel.app", // Production frontend
+];
+
+// ---- CORS FIX (IMPORTANT) ----
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      // Allow tools / mobile apps / curl (no origin)
+      if (!origin) return callback(null, true);
+
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      } else {
+        return callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
+);
+
+// Preflight support
+app.options("*", cors());
+
+// ---- MIDDLEWARE ----
 app.use(express.json());
 app.use(morgan("dev"));
 
-// Health
+// ---- HEALTH CHECK ----
 app.get("/api/health", (_req, res) => {
   res.json({ ok: true, service: "josh-creations-api" });
 });
 
-// Contact mail form route
+// ---- CONTACT ROUTE ----
 app.post("/api/contact", async (req, res) => {
   try {
     const { name, email, subject, message } = req.body;
@@ -37,13 +60,15 @@ app.post("/api/contact", async (req, res) => {
   }
 });
 
-// Routes
+// ---- API ROUTES ----
 app.use("/api/auth", authRouter);
 app.use("/api/inquiry", inquiriesRouter);
 app.use("/api/projects", projectsRouter);
+
+// Serve uploaded files
 app.use("/uploads", express.static("uploads"));
 
-// Start
+// ---- START SERVER ----
 const start = async () => {
   await connectToDatabase();
   app.listen(PORT, () => {
